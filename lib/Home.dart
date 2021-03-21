@@ -27,10 +27,34 @@ class _HomeState extends State<Home> {
     return FutureBuilder<Map>(
       future: _recuperarPreco(),
       builder: (context, snapshot) {
+        //Definindo dados dos resultados
+        String resultado;
+
         switch (snapshot.connectionState) {
           //Estado nulo da conexao
           case ConnectionState.none:
+
+          case ConnectionState.waiting:
+            print("Conexao Waiting");
+            resultado = "Carregando...";
+            break;
+          case ConnectionState.active:
+
+          case ConnectionState.done:
+            print("Conexao Done");
+            if(snapshot.hasError){
+              resultado = "Erro ao carregar os dados.";
+            } else {
+
+              double valor = snapshot.data["BRL"]["buy"];
+
+            }
+            break;
         }
+
+        return Center(
+          child: Text(""),
+        );
       },
     );
   }
