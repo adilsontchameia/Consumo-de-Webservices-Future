@@ -1,3 +1,4 @@
+import 'package:consumo_webservices_future/Post.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -20,7 +21,7 @@ class _HomeState extends State<Home> {
 
   String urlBase = "https://jsonplaceholder.typicode.com";
   //Metodo para recuperar postagens
-  _recuperarPostagens() {}
+  Future<List<Post>> _recuperarPostagens() {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +50,7 @@ class _HomeState extends State<Home> {
               break;
           }
           return Center(
-            child: Text(resultado),
+            child: null,
           );
         },
       ),
