@@ -70,9 +70,13 @@ class _HomeState extends State<Home> {
                 return ListView.builder(
                     itemCount: snapshot.data.length,
                     itemBuilder: (context, index) {
+                      //Pegar a postagem da API para uma lista
+                      List<Post> lista = snapshot.data;
+                      Post post = lista[index];
+                      //Retornar na lista
                       return ListTile(
-                        title: Text("Titulo"),
-                        subtitle: Text("Subtitulo"),
+                        title: Text(post.title),
+                        subtitle: Text(post.id.toString()),
                       );
                     });
               }
