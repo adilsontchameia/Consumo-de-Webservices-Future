@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
             if (snapshot.hasError) {
               resultado = "Erro ao carregar os dados.";
             } else {
-              double valor = snapshot.data!["BRL"]["buy"];
+              double valor = snapshot.data["BRL"]["buy"]; //Aqui
               resultado = "Preço do bitcoin: ${valor.toString()} ";
             }
             break;
