@@ -26,7 +26,19 @@ class _HomeState extends State<Home> {
     http.Response response = await http.get(_urlBase + "/posts");
     var dadosJson = json.decode(response.body);
 
-    print(dadosJson);
+    //Percorrer para retornar como lista de postagens
+    //Lista de postagens
+    List<Post> postagens = List();
+    for (var post in dadosJson) {
+      print("Post: " + post["title"]);
+      //Post configurada
+      //Posso adicionar numa lista
+      Post p = Post(post["userId"], post["id"], post["title"], post["body"]);
+      postagens.add(p);
+    }
+
+    return postagens;
+    //print(postagens.toString());
   }
 
   @override
