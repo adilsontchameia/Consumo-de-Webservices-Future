@@ -20,15 +20,17 @@ class _HomeState extends State<Home> {
 */
 
   String urlBase = "https://jsonplaceholder.typicode.com";
+
   //Metodo para recuperar postagens
   Future<List<Post>> _recuperarPostagens() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Consumo de Servico Avancado"),
       ),
-      body: FutureBuilder<Map>(
+      body: FutureBuilder<List<Post>>(
         future: _recuperarPostagens(),
         builder: (context, snapshot) {
           //String resultado;
@@ -44,7 +46,7 @@ class _HomeState extends State<Home> {
               if (snapshot.hasError) {
                 //resultado = "Erro ao carregar os dados.";
               } else {
-                double valor = snapshot.data["BRL"]["buy"]; //Aqui
+                //double valor = snapshot.data["BRL"]["buy"]; //Aqui
                 //resultado = "Preço do bitcoin: ${valor.toString()} ";
               }
               break;
