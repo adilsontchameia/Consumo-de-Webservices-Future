@@ -54,23 +54,30 @@ class _HomeState extends State<Home> {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
             case ConnectionState.waiting:
-              print("conexao waiting");
-              //resultado = "Carregando...";
+              //print("conexao waiting");
+              //Indicador de progresso
+              return Center(child: CircularProgressIndicator());
               break;
             case ConnectionState.active:
             case ConnectionState.done:
-              print("conexao done");
               if (snapshot.hasError) {
                 //resultado = "Erro ao carregar os dados.";
+                print("Erro ao carregar");
               } else {
                 //double valor = snapshot.data["BRL"]["buy"]; //Aqui
                 //resultado = "Preço do bitcoin: ${valor.toString()} ";
+                print("Lista carregada");
+                return ListView.builder(
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text("Titulo"),
+                        subtitle: Text("Subtitulo"),
+                      );
+                    });
               }
               break;
           }
-          return Center(
-            child: null,
-          );
         },
       ),
     );
