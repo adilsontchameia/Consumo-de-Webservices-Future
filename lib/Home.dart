@@ -19,10 +19,15 @@ class _HomeState extends State<Home> {
   }
 */
 
-  String urlBase = "https://jsonplaceholder.typicode.com";
+  String _urlBase = "https://jsonplaceholder.typicode.com";
 
   //Metodo para recuperar postagens
-  Future<List<Post>> _recuperarPostagens() {}
+  Future<List<Post>> _recuperarPostagens() async {
+    http.Response response = await http.get(_urlBase + "/posts");
+    var dadosJson = json.decode(response.body);
+
+    print(dadosJson);
+  }
 
   @override
   Widget build(BuildContext context) {
