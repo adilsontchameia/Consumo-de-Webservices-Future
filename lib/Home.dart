@@ -44,13 +44,22 @@ class _HomeState extends State<Home> {
 //Metodo de requisiscao
   _post() async {
     var corpo = json.encode(
-      {"userId": 1, "id": 1, "title": "", "body": ""},
+      {
+        "userId": 128,
+        "id": null,
+        "title": "Titulo",
+        "body": "Corpo da Postagem"
+      },
     );
     http.Response response = await http.post(_urlBase + "/posts",
         //Parametros opcionais
         headers: {"Content-type": "application/json; charset=UTF-8"},
         //Corpo (dados a se enviar parar requisicao post)
-        body: {});
+        body: corpo);
+
+    //Mostrando o restado, e os dados da API
+    print("Resultado: ${response.statusCode}");
+    print("Resultado: ${response.body}");
   }
 
   _put() {}
