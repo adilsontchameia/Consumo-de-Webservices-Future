@@ -55,6 +55,7 @@ class _HomeState extends State<Home> {
     //Mostrando o restado, e os dados da API
     print("Resultado: ${response.statusCode}");
     print("Resultado: ${response.body}");
+    //Fim
   }
 
 //Atualizar os recursos na API
