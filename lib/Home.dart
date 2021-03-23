@@ -101,8 +101,29 @@ class _HomeState extends State<Home> {
     print("Resultado: ${response.body}");
   }
 
-//
-  _delete() {}
+//Metodo para apagar
+  _delete() async {
+    var corpo = json.encode(
+      {
+        "userId": 128,
+        "id": null,
+        "title": "Titulo alterado",
+        "body": "Corpo da Postagem alterada"
+      },
+    );
+    http.Response response = await http.delete(_urlBase + "/posts/2");
+
+    //Mostrando o restado, e os dados da API
+    //Codigo 200 - OK
+    if (response.statusCode == 200) {
+      //Sucesso
+    } else {
+      //Erro
+    }
+    print("Resultado: ${response.statusCode}");
+    print("Resultado: ${response.body}");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -125,7 +146,7 @@ class _HomeState extends State<Home> {
                   child: Text("Atualizar"),
                 ),
                 ElevatedButton(
-                  onPressed: _post,
+                  onPressed: _delete,
                   child: Text("Remover"),
                 ),
               ],
