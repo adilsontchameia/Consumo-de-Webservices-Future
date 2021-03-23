@@ -53,7 +53,7 @@ class _HomeState extends State<Home> {
     );
     http.Response response = await http.post(_urlBase + "/posts",
         //Parametros opcionais
-        headers: {"Content-type": "application/json; charset=UTF-8"},
+        headers: {'Content-type': 'application/json; charset=UTF-8'},
         //Corpo (dados a se enviar parar requisicao post)
         body: corpo);
 
@@ -81,7 +81,7 @@ class _HomeState extends State<Home> {
               children: [
                 ElevatedButton(
                   onPressed: _post,
-                  child: Text("salvar"),
+                  child: Text("Salvar"),
                 ),
                 ElevatedButton(
                   onPressed: _post,
