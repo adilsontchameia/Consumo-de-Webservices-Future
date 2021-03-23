@@ -42,12 +42,22 @@ class _HomeState extends State<Home> {
   }
 
 //Metodo de requisiscao
-  _post() {}
+  _post() async {
+    var corpo = json.encode(
+      {"userId": 1, "id": 1, "title": "", "body": ""},
+    );
+    http.Response response = await http.post(_urlBase + "/posts",
+        //Parametros opcionais
+        headers: {"Content-type": "application/json; charset=UTF-8"},
+        //Corpo (dados a se enviar parar requisicao post)
+        body: {});
+  }
 
   _put() {}
 
   _patch() {}
 
+  _delete() {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
