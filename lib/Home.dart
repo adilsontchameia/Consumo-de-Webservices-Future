@@ -70,11 +70,11 @@ class _HomeState extends State<Home> {
       {
         "userId": 128,
         "id": null,
-        "title": "Titulo",
-        "body": "Corpo da Postagem"
+        "title": "Titulo alterado",
+        "body": "Corpo da Postagem alterada"
       },
     );
-    http.Response response = await http.post(_urlBase + "/posts",
+    http.Response response = await http.put(_urlBase + "/posts/2",
         //Parametros opcionais
         headers: {'Content-type': 'application/json; charset=UTF-8'},
         //Corpo (dados a se enviar parar requisicao post)
