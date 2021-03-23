@@ -41,8 +41,12 @@ class _HomeState extends State<Home> {
     //print(postagens.toString());
   }
 
-//Metodo do tipo post
+//Metodo de requisiscao
   _post() {}
+
+  _put() {}
+
+  _patch() {}
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +60,18 @@ class _HomeState extends State<Home> {
           children: [
             Row(
               children: [
-                ElevatedButton(onPressed: _post, child: Text("salvar"))
+                ElevatedButton(
+                  onPressed: _post,
+                  child: Text("salvar"),
+                ),
+                ElevatedButton(
+                  onPressed: _post,
+                  child: Text("Atualizar"),
+                ),
+                ElevatedButton(
+                  onPressed: _post,
+                  child: Text("Remover"),
+                ),
               ],
             ),
             //Future
