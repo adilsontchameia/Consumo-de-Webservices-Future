@@ -41,48 +41,66 @@ class _HomeState extends State<Home> {
     //print(postagens.toString());
   }
 
+//Metodo do tipo post
+  _post() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Consumo de Servico Avancado"),
       ),
-      body: FutureBuilder<List<Post>>(
-        future: _recuperarPostagens(),
-        builder: (context, snapshot) {
-          //String resultado;
-          switch (snapshot.connectionState) {
-            case ConnectionState.none:
-            case ConnectionState.waiting:
-              //print("conexao waiting");
-              //Indicador de progresso
-              return Center(child: CircularProgressIndicator());
-              break;
-            case ConnectionState.active:
-            case ConnectionState.done:
-              if (snapshot.hasError) {
-                //resultado = "Erro ao carregar os dados.";
-                print("Erro ao carregar");
-              } else {
-                //double valor = snapshot.data["BRL"]["buy"]; //Aqui
-                //resultado = "Preço do bitcoin: ${valor.toString()} ";
-                print("Lista carregada");
-                return ListView.builder(
-                    itemCount: snapshot.data.length,
-                    itemBuilder: (context, index) {
-                      //Pegar a postagem da API para uma lista
-                      List<Post> lista = snapshot.data;
-                      Post post = lista[index];
-                      //Retornar na lista
-                      return ListTile(
-                        title: Text(post.title),
-                        subtitle: Text(post.id.toString()),
-                      );
-                    });
-              }
-              break;
-          }
-        },
+      body: Container(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                ElevatedButton(onPressed: _post, child: Text("salvar"))
+              ],
+            ),
+            //Future
+            Expanded(
+              child: FutureBuilder<List<Post>>(
+                future: _recuperarPostagens(),
+                builder: (context, snapshot) {
+                  //String resultado;
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.none:
+                    case ConnectionState.waiting:
+                      //print("conexao waiting");
+                      //Indicador de progresso
+                      return Center(child: CircularProgressIndicator());
+                      break;
+                    case ConnectionState.active:
+                    case ConnectionState.done:
+                      if (snapshot.hasError) {
+                        //resultado = "Erro ao carregar os dados.";
+                        print("Erro ao carregar");
+                      } else {
+                        //double valor = snapshot.data["BRL"]["buy"]; //Aqui
+                        //resultado = "Preço do bitcoin: ${valor.toString()} ";
+                        print("Lista carregada");
+                        return ListView.builder(
+                            itemCount: snapshot.data.length,
+                            itemBuilder: (context, index) {
+                              //Pegar a postagem da API para uma lista
+                              List<Post> lista = snapshot.data;
+                              Post post = lista[index];
+                              //Retornar na lista
+                              return ListTile(
+                                title: Text(post.title),
+                                subtitle: Text(post.id.toString()),
+                              );
+                            });
+                      }
+                      break;
+                  }
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
