@@ -85,8 +85,23 @@ class _HomeState extends State<Home> {
     print("Resultado: ${response.body}");
   }
 
-  _patch() {}
+//Atualiza coisas especificas, um unico campo
+  _patch() async {
+    var corpo = json.encode(
+      {"userId": 128, "id": null, "body": "Corpo da Postagem alterada"},
+    );
+    http.Response response = await http.patch(_urlBase + "/posts/2",
+        //Parametros opcionais
+        headers: {'Content-type': 'application/json; charset=UTF-8'},
+        //Corpo (dados a se enviar parar requisicao post)
+        body: corpo);
 
+    //Mostrando o restado, e os dados da API
+    print("Resultado: ${response.statusCode}");
+    print("Resultado: ${response.body}");
+  }
+
+//
   _delete() {}
   @override
   Widget build(BuildContext context) {
@@ -105,7 +120,8 @@ class _HomeState extends State<Home> {
                   child: Text("Salvar"),
                 ),
                 ElevatedButton(
-                  onPressed: _post,
+                  //onPressed: _put,
+                  onPressed: _patch,
                   child: Text("Atualizar"),
                 ),
                 ElevatedButton(
