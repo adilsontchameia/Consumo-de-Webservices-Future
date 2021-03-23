@@ -44,14 +44,8 @@ class _HomeState extends State<Home> {
 //Metodo de requisiscao
 //Post - insere
   _post() async {
-    var corpo = json.encode(
-      {
-        "userId": 128,
-        "id": null,
-        "title": "Titulo",
-        "body": "Corpo da Postagem"
-      },
-    );
+    Post post = new Post(120, null, "Titulo", "Corpo da Postagem");
+    var corpo = json.encode(post.toJson());
     http.Response response = await http.post(_urlBase + "/posts",
         //Parametros opcionais
         headers: {'Content-type': 'application/json; charset=UTF-8'},
@@ -115,11 +109,6 @@ class _HomeState extends State<Home> {
 
     //Mostrando o restado, e os dados da API
     //Codigo 200 - OK
-    if (response.statusCode == 200) {
-      //Sucesso
-    } else {
-      //Erro
-    }
     print("Resultado: ${response.statusCode}");
     print("Resultado: ${response.body}");
   }
